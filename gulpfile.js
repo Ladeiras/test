@@ -16,6 +16,7 @@ gulp.task('ts', function() {
 		.pipe(
 			ts({
 				noImplicitAny: true,
+				target: 'es6',
 				outFile: 'script.js',
 			})
 		)
