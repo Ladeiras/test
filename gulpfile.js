@@ -1,12 +1,25 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var ts = require('gulp-typescript');
 var browserSync = require('browser-sync');
 
 gulp.task('sass', function() {
 	gulp
 		.src('style.scss')
 		.pipe(sass({ includePaths: ['scss'] }))
-    .pipe(gulp.dest('css'))
+		.pipe(gulp.dest('css'));
+});
+
+gulp.task('ts', function() {
+	gulp
+		.src('script.ts')
+		.pipe(
+			ts({
+				noImplicitAny: true,
+				outFile: 'script.js',
+			})
+		)
+		.pipe(gulp.dest('js'));
 });
 
 gulp.task('browser-sync', function() {
@@ -17,6 +30,7 @@ gulp.task('browser-sync', function() {
 	});
 });
 
-gulp.task('default', ['sass', 'browser-sync'], function() {
+gulp.task('default', ['sass', 'ts', 'browser-sync'], function() {
 	gulp.watch('style.scss', ['sass']);
+	gulp.watch('script.ts', ['ts']);
 });

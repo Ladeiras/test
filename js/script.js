@@ -1,1 +1,1 @@
-console.warn('Hey :)');
+console.warn('hey');
