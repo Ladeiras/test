@@ -7,7 +7,7 @@ gulp.task('sass', function() {
 	gulp
 		.src('style.scss')
 		.pipe(sass({ includePaths: ['scss'] }))
-		.pipe(gulp.dest('css'));
+		.pipe(gulp.dest('assets/css'));
 });
 
 gulp.task('ts', function() {
@@ -24,7 +24,7 @@ gulp.task('ts', function() {
 });
 
 gulp.task('browser-sync', function() {
-	browserSync.init(['css/*.css', 'js/*.js', '*.html'], {
+	browserSync.init(['assets/css/*.css', 'assets/js/*.js', '*.html'], {
 		server: {
 			baseDir: './',
 		},
